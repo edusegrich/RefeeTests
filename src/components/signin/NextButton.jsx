@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet, TouchableHighlight } from 'react-native'
 import UI_COLORS from '../../colors'
 
-const NextButton = ({ navigation, label, handleOnPress }) => {
+const NextButton = ({ label, handleOnPress }) => {
 	return (
         <TouchableHighlight
         style={styles.button}

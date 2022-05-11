@@ -1,29 +1,69 @@
 import { View, Text, TextInput, Image, StyleSheet } from 'react-native'
+import { useState } from 'react'
 import LoginButton from './common/LoginButton'
+import NextButton from './signin/NextButton'
+import { InputState } from './signin/Signin'
 import Separator from './common/Separator'
 import { LoginWithGoogleButton } from './common/GoogleButtons'
 import UI_ICONS from '../icons/iconsDict'
 import UI_COLORS from '../colors'
+import { isValidEmail, isValidPassword } from '../utils/checkCredentials'
 
 const Welcome = ({ navigation }) => {
+	const [validEmail, setValidEmail] = useState(InputState.NONE)
+	const [validPassword, setValidPassword] = useState(InputState.NONE)
+	const emailError = validEmail === InputState.NONVALID ? true : false
+	const passwordError = validPassword === InputState.NONVALID ? true : false
+
+	const handleSetEmail = (text) => {
+		String(text).length !== 0 && isValidEmail(text)
+		? setValidEmail(InputState.VALID)
+		: setValidEmail(InputState.NONE)
+	}
+
+	const handleSetPassword = (text) => {
+		String(text).length !== 0 && isValidPassword(text)
+		? setValidPassword(InputState.VALID)
+		: setValidPassword(InputState.NONE)
+	}
+
+	const handleOnPress = () => {
+		if (validEmail === InputState.VALID && validPassword === InputState.VALID) {
+			navigation.navigate('')
+		} else {
+			if (validEmail === InputState.NONE) setValidEmail(InputState.NONVALID)
+			if (validPassword === InputState.NONE) setValidPassword(InputState.NONVALID)
+		}
+	}
+
     return (
         <View>
             <View style={styles.container}>
                 <Image style={styles.logo} source={UI_ICONS.refeetests} />
                 <TextInput
-                    style={styles.input}
+                    style={emailError === false ? styles.input : styles.inputError}
                     placeholder={'Correo electrónico'}
+					onChangeText={handleSetEmail}
                 />
+				{
+					emailError && <Text style={styles.errorMessage}>La cuenta de correo no es válida</Text>
+				}
+
                 <TextInput
-                    style={styles.input}
+                    style={passwordError === false ? styles.input : styles.inputError}
                     secureTextEntry={true}
                     placeholder={'Contraseña'}
+					onChangeText={handleSetPassword}
                 />
-                <LoginButton />
-                {/* <View>
-                    <View style={styles.separator} />
-                    <Text style={styles.title}>o</Text>
-                </View> */}
+				{
+					passwordError && <Text style={styles.errorMessage}>La contraseña es necesaria</Text>
+				}
+
+                <NextButton {...{
+					label: 'Inicia Sesión',
+					handleOnPress: handleOnPress,
+				}} />
+
                 <Separator />
                 <LoginWithGoogleButton />
                 <View style={{ alignItems: 'center', marginTop: 40 }}>
@@ -85,6 +125,24 @@ const styles = StyleSheet.create({
         height: 24,
         margin: 5,
     },
+	inputError: {
+		fontSize: 14,
+		marginTop: 5,
+		padding: 10,
+		paddingHorizontal: 15,
+		borderWidth: 1,
+		borderRadius: 10,
+		borderColor: UI_COLORS.red,
+		fontFamily: 'Inter',
+	},
+	errorMessage: {
+		fontSize: 14,
+		fontWeight: '400',
+		width: 'auto',
+		marginTop: 5,
+		fontFamily: 'Inter',
+		color: UI_COLORS.red
+	},
 	container: {
 		// backgroundColor: '#FFFACC'
 		display: 'flex',

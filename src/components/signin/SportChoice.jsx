@@ -1,11 +1,21 @@
 import { View, Text, StyleSheet } from 'react-native'
 import { useState } from 'react'
 import NextButton from './NextButton'
-import { Pill, Sport } from './Pill'
+import { Pill, PillSelection } from '../common/Pill'
 import UI_COLORS from '../../colors'
 
+export const Sport = {
+	FUTBOL: '⚽ Fútbol',
+	FUTBOL_SALA: '🥅 Fútbol sala',
+	BALONMANO: '🤾‍♂️ Balonmano',
+	BALONCESTO: '🏀 Baloncesto',
+	RUGBY: '🏈 Rugby',
+	VOLLEYBALL: '🏐 Volleyball',
+	NONE: 'none'
+}
+
 export const SportChoice = ({ navigation }) => {
-	const [selectedSport, setSelectedSport] = useState(Sport.NONE)
+	const [selectedSport, setSelectedSport] = useState(PillSelection.NONE)
 	const [choiceError, setChoiceError] = useState(false)
 	// const choiceError = selectedSport === Sport.NONE ? true : false
 
@@ -14,7 +24,7 @@ export const SportChoice = ({ navigation }) => {
 	}
 
 	const handleOnPress = () => {
-		selectedSport !== Sport.NONE
+		selectedSport !== PillSelection.NONE
 		? navigation.navigate('CategoryChoice')
 		: setChoiceError(true)
 		// if (selectedSport !== Sport.NONE) navigation.navigate('CategoryChoice')
@@ -25,12 +35,12 @@ export const SportChoice = ({ navigation }) => {
 		<View style={styles.container}>
 			<Text style={styles.title}>¿A qué deporte te dedicas?🧐</Text>
             <View style={styles.pills}>
-				<Pill {...{sport: Sport.FUTBOL, selectedSport, handleSelectedSport}} />
-				<Pill {...{sport: Sport.FUTBOL_SALA, selectedSport, handleSelectedSport}} />
-				<Pill {...{sport: Sport.BALONMANO, selectedSport, handleSelectedSport}} />
-				<Pill {...{sport: Sport.BALONCESTO, selectedSport, handleSelectedSport}} />
-				<Pill {...{sport: Sport.RUGBY, selectedSport, handleSelectedSport}} />
-				<Pill {...{sport: Sport.VOLLEYBALL, selectedSport, handleSelectedSport}} />
+				<Pill {...{text: Sport.FUTBOL, selectedPill: selectedSport, handleSelectedPill: handleSelectedSport}} />
+				<Pill {...{text: Sport.FUTBOL_SALA, selectedPill: selectedSport, handleSelectedPill: handleSelectedSport}} />
+				<Pill {...{text: Sport.BALONMANO, selectedPill: selectedSport, handleSelectedPill: handleSelectedSport}} />
+				<Pill {...{text: Sport.BALONCESTO, selectedPill: selectedSport, handleSelectedPill: handleSelectedSport}} />
+				<Pill {...{text: Sport.RUGBY, selectedPill: selectedSport, handleSelectedPill: handleSelectedSport}} />
+				<Pill {...{text: Sport.VOLLEYBALL, selectedPill: selectedSport, handleSelectedPill: handleSelectedSport}} />
 			</View>
 			{
 				choiceError && <Text style={styles.errorMessage}>Debes elegir un deporte</Text>

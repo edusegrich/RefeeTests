@@ -1,25 +1,18 @@
-import { useState } from 'react'
-import { View, Text, StyleSheet, TouchableHighlight } from 'react-native'
+import { Text, StyleSheet, TouchableHighlight } from 'react-native'
 import UI_COLORS from '../../colors'
 
-export const Sport = {
-	FUTBOL: '⚽ Fútbol',
-	FUTBOL_SALA: '🥅 Fútbol sala',
-	BALONMANO: '🤾‍♂️ Balonmano',
-	BALONCESTO: '🏀 Baloncesto',
-	RUGBY: '🏈 Rugby',
-	VOLLEYBALL: '🏐 Volleyball',
+export const PillSelection = {
 	NONE: 'none'
 }
 
 export const Pill = (props) => {
-    const { sport, selectedSport, handleSelectedSport } = props
-	const selected = (sport === selectedSport ? true : false)
+    const { text, selectedPill, handleSelectedPill } = props
+	const selected = (text === selectedPill ? true : false)
 
 	const handleOnPress = () => {
 		selected === false
-		? handleSelectedSport(sport)
-		: handleSelectedSport(Sport.NONE)
+		? handleSelectedPill(text)
+		: handleSelectedPill(PillSelection.NONE)
 	}
 
 	return (
@@ -37,8 +30,8 @@ export const Pill = (props) => {
                 {/* <View style={styles.container}> */}
 					{
 						selected === true
-						? <Text style={styles.labelSelected}>{sport}</Text>
-						: <Text style={styles.label}>{sport}</Text>
+						? <Text style={styles.labelSelected}>{text}</Text>
+						: <Text style={styles.label}>{text}</Text>
 					}
                     {/* <Text style={styles.label}>{text}</Text> */}
                 {/* </View> */}

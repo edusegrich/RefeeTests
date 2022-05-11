@@ -5,11 +5,9 @@ import { SignWithGoogleButton } from '../common/GoogleButtons'
 import Separator from '../common/Separator'
 import UI_ICONS from '../../icons/iconsDict'
 import UI_COLORS from '../../colors'
+import { isValidEmail, isValidPassword } from '../../utils/checkCredentials'
 
-const isValidEmail = (mail) => /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/.test(mail)
-const isValidPassword = (password) => String(password).length > 0
-
-const InputState = {
+export const InputState = {
 	VALID: 'Valid',
 	NONVALID: 'Non valid',
 	NONE: 'none'
@@ -69,7 +67,6 @@ export const Signin = ({ navigation }) => {
 			}
 
 			<NextButton {...{
-				// navigation: () => navigation.navigate('SportChoice'),
 				label: 'Siguiente',
 				handleOnPress: handleOnPress,
 			}} />

@@ -1,22 +1,14 @@
 import { View, Text, StyleSheet } from 'react-native'
 import { useState } from 'react'
-import { useFonts } from 'expo-font'
-import Inter from '../../fonts/Inter.ttf'
 import NextButton from './NextButton'
-import { Pill, Sport } from './Pill'
+import { Pill, PillSelection } from '../common/Pill'
 import UI_COLORS from '../../colors'
 
 export const CategoryChoice = () => {
-	const [selectedSport, setSelectedSport] = useState(Sport.NONE)
-	const [loaded] = useFonts({
-		Inter: Inter
-	})
-	if (!loaded) {
-		return null
-	}
+	const [selectedCategory, setSelectedCategory] = useState(PillSelection.NONE)
 
-	const handleSelectedSport = (sport) => {
-		setSelectedSport(sport)
+	const handleSelectedCategory = (category) => {
+		setSelectedCategory(category)
 	}
 
 	const handleOnPress = () => {
@@ -27,9 +19,9 @@ export const CategoryChoice = () => {
 		<View style={styles.container}>
 			<Text style={styles.title}>¿En qué categoría?🥇🥈🥉</Text>
             <View style={styles.pills}>
-				<Pill {...{sport: 'Primera División', selectedSport, handleSelectedSport}} />
-				<Pill {...{sport: 'Segunda División', selectedSport, handleSelectedSport}} />
-				<Pill {...{sport: 'Tercera División', selectedSport, handleSelectedSport}} />
+				<Pill {...{text: 'Primera División', selectedPill: selectedCategory, handleSelectedPill: handleSelectedCategory}} />
+				<Pill {...{text: 'Segunda División', selectedPill: selectedCategory, handleSelectedPill: handleSelectedCategory}} />
+				<Pill {...{text: 'Tercera División', selectedPill: selectedCategory, handleSelectedPill: handleSelectedCategory}} />
 			</View>
 			<NextButton {...{handleOnPress: handleOnPress, label: 'Siguiente'}} />
 		</View>

@@ -1,12 +1,14 @@
 // import { StatusBar } from 'expo-status-bar'
 // import Constants from 'expo-constants'
-import { View, Text, StyleSheet } from 'react-native'
+import { View, ScrollView, Text, StyleSheet } from 'react-native'
 import Constants from 'expo-constants'
 import UI_COLORS from '../colors'
 import Welcome from './Welcome'
 import { SportChoice } from './signin/SportChoice'
 import { CategoryChoice } from './signin/CategoryChoice'
 import { Signin } from './signin/Signin'
+import QuestionCard from './user/QuestionCard'
+import Exam from './user/Exam'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { useFonts } from 'expo-font'
 import Inter from '../fonts/Inter.ttf'
@@ -28,7 +30,7 @@ const Main = () => {
 				contentStyle: { backgroundColor: 'transparent' }
 			}}
 			>
-				<Stack.Screen
+				{/* <Stack.Screen
 					name="Welcome"
 					component={Welcome}
 				/>
@@ -39,21 +41,32 @@ const Main = () => {
 						contentStyle: { backgroundColor: UI_COLORS.blueSky,
 						justifyContent: 'center' }
 					}}
-				/>
-				<Stack.Screen
+				/> */}
+				{/* <Stack.Screen
 					name="SportChoice"
 					component={SportChoice}
 					options={{
 						contentStyle: { backgroundColor: UI_COLORS.blueSky,
 						justifyContent: 'center' }
 					}}
-				/>
-				<Stack.Screen
+				/> */}
+				{/* <Stack.Screen
 					name="CategoryChoice"
 					component={CategoryChoice}
 					options={{
 						contentStyle: { backgroundColor: UI_COLORS.blueSky,
 						justifyContent: 'center' }
+					}}
+				/> */}
+				<Stack.Screen
+					name="Exam"
+					component={Exam}
+					options={{
+						contentStyle: {
+							height: 'auto',
+							backgroundColor: UI_COLORS.blueSky,
+							justifyContent: 'center'
+						}
 					}}
 				/>
 			</Stack.Navigator>
