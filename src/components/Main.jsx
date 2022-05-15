@@ -7,8 +7,9 @@ import Welcome from './Welcome'
 import { SportChoice } from './signin/SportChoice'
 import { CategoryChoice } from './signin/CategoryChoice'
 import { Signin } from './signin/Signin'
-import QuestionCard from './user/QuestionCard'
 import Exam from './user/Exam'
+import Home from './user/Home'
+import AppBar from './common/AppBar'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { useFonts } from 'expo-font'
 import Inter from '../fonts/Inter.ttf'
@@ -30,7 +31,7 @@ const Main = () => {
 				contentStyle: { backgroundColor: 'transparent' }
 			}}
 			>
-				{/* <Stack.Screen
+				<Stack.Screen
 					name="Welcome"
 					component={Welcome}
 				/>
@@ -41,39 +42,45 @@ const Main = () => {
 						contentStyle: { backgroundColor: UI_COLORS.blueSky,
 						justifyContent: 'center' }
 					}}
-				/> */}
-				{/* <Stack.Screen
+				/>
+				<Stack.Screen
 					name="SportChoice"
 					component={SportChoice}
 					options={{
 						contentStyle: { backgroundColor: UI_COLORS.blueSky,
 						justifyContent: 'center' }
 					}}
-				/> */}
-				{/* <Stack.Screen
+				/>
+				<Stack.Screen
 					name="CategoryChoice"
 					component={CategoryChoice}
 					options={{
 						contentStyle: { backgroundColor: UI_COLORS.blueSky,
 						justifyContent: 'center' }
 					}}
-				/> */}
+				/>
 				<Stack.Screen
 					name="Exam"
 					component={Exam}
 					options={{
 						contentStyle: {
-							height: 'auto',
 							backgroundColor: UI_COLORS.blueSky,
 							justifyContent: 'center'
 						}
 					}}
 				/>
+				<Stack.Screen
+					name="Home"
+					component={Home}
+					options={{
+						contentStyle: {
+							backgroundColor: UI_COLORS.blueSky,
+						}
+					}}
+				/>
 			</Stack.Navigator>
-			
-			{/* <Signin /> */}
-			{/* <SportChoice /> */}
-			{/* <Welcome /> */}
+			<View style={styles.separator} />
+			<AppBar />	
 		</View>
 	)
 }
@@ -88,6 +95,11 @@ const styles = StyleSheet.create({
 		// backgroundColor: UI_COLORS.blueSky,
 		// backgroundColor: '#FFEA81',
 	},
+	separator: {
+        width: '100%',
+        borderTopWidth: 1,
+        borderColor: UI_COLORS.gray,
+    }
 })
 
 // const styles = StyleSheet.create({

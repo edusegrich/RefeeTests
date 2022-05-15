@@ -29,7 +29,7 @@ const Welcome = ({ navigation }) => {
 
 	const handleOnPress = () => {
 		if (validEmail === InputState.VALID && validPassword === InputState.VALID) {
-			navigation.navigate('')
+			navigation.navigate('Home')
 		} else {
 			if (validEmail === InputState.NONE) setValidEmail(InputState.NONVALID)
 			if (validPassword === InputState.NONE) setValidPassword(InputState.NONVALID)
