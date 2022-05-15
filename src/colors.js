@@ -8,7 +8,11 @@ const UI_COLORS = {
     gray: '#E7E9EE',
     gray2: '#E8E8ED',
     gray3: '#F5F7FB',
-    red: '#F72B60'
+    gray4: '#A7A2A2',
+    red: '#F72B60',
+    redSoft: '#FAE6E8',
+    green: '#1BE68B',
+    greenSoft: '#E1F8F0'
 }
 
 export default UI_COLORS

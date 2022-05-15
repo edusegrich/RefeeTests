@@ -1,97 +1,105 @@
 import { View, Text, TextInput, Image, StyleSheet } from 'react-native'
-import { useState } from 'react'
-import UI_ICONS from '../icons/iconsDict'
-import UI_COLORS from '../colors'
+import UI_COLORS from '../../colors'
+import NewExamButton from '../common/Buttons/NewExamButton'
+import Table from '../common/Table'
+import ResultsPieChart from '../common/ResultsPieChart'
+import ResultsSummary from './ResultsSummary'
+import AppBar from '../common/AppBar'
 
 const Home = ({ navigation }) => {
+	const handleOnPress = () => {
+		navigation.navigate('Exam')
+	}
 
     return (
-        <View>
-            
-        </View>
+		<View>
+			<View style={container}>
+				<Text style={styles.title}>Bienvenido, Edu.</Text>
+				<View style={{ display: 'flex', flexDirection: 'row' }}>
+					{/* <Pill {...{text: Sport.FUTBOL_SALA}} />
+					<Pill {...{text: '3ª División'}} /> */}
+				</View>
+			</View>
+
+			<View style={statistics}>
+				<ResultsPieChart />
+				<ResultsSummary />
+			</View>
+
+			<Table />
+			
+			<View style={styles.buttonContainer}>
+				<NewExamButton {...{ handleOnPress: handleOnPress }}/>
+			</View>
+		</View>
     )
 }
 
+const generalStyles = StyleSheet.create({
+	rectangle: {
+		backgroundColor: UI_COLORS.white,
+		shadowColor: '#000',
+		shadowOpacity: 0.53,
+		shadowRadius: 13.97,
+		elevation: 21,
+		borderRadius: 8,
+	}
+})
+
 const styles = StyleSheet.create({
-    separator: {
-        marginTop: 10,
-        width: 'auto',
-        borderTopWidth: 1,
-        borderColor: UI_COLORS.blueNavy,
-    },
+	buttonContainer: {
+		display: 'flex',
+		alignItems: 'flex-end',
+		marginHorizontal: 24
+	},
+	lastExams: {
+		display: 'flex',
+		flexDirection: 'row',
+		marginBottom: 5,
+		padding: 12,
+		width: 'auto',
+	},
+	statistics: {
+		display: 'flex',
+		flexDirection: 'row',
+		justifyContent: 'space-between',
+		alignItems: 'center',
+		marginVertical: 12,
+		marginHorizontal: 24,
+		padding: 12,
+		width: 'auto',
+	},
+	container: {
+		display: 'flex',
+		flexDirection: 'column',
+		marginTop: 24,
+		marginHorizontal: 24,
+		padding: 24,
+		width: 'auto',
+	},
 	title: {
 		display: 'flex',
-		textAlign: 'center',
 		fontSize: 20,
 		fontWeight: '700',
-		marginTop: 20,
-		marginBottom: 20,
+		// marginTop: 20,
+		marginBottom: 10,
 		fontFamily: 'Inter',
 		color: UI_COLORS.blueNavy,
 	},
 	label: {
-		fontSize: 14,
+		fontSize: 12,
 		fontWeight: '500',
 		width: 'auto',
-		marginTop: 20,
 		fontFamily: 'Inter',
 		color: UI_COLORS.blueNavy,
 	},
     click: {
         color: UI_COLORS.blueLink,
     },
-	input: {
-		fontSize: 14,
-		marginTop: 10,
-		padding: 10,
-		paddingHorizontal: 15,
-		borderWidth: 1,
-		borderRadius: 10,
-		borderColor: UI_COLORS.gray,
-		fontFamily: 'Inter',
-	},
-	logo: {
-		height: 75,
-		width: 'auto',
-        marginBottom: 20,
-	},
-    icon: {
-        width: 24,
-        height: 24,
-        margin: 5,
-    },
-	inputError: {
-		fontSize: 14,
-		marginTop: 5,
-		padding: 10,
-		paddingHorizontal: 15,
-		borderWidth: 1,
-		borderRadius: 10,
-		borderColor: UI_COLORS.red,
-		fontFamily: 'Inter',
-	},
-	errorMessage: {
-		fontSize: 14,
-		fontWeight: '400',
-		width: 'auto',
-		marginTop: 5,
-		fontFamily: 'Inter',
-		color: UI_COLORS.red
-	},
-	container: {
-		// backgroundColor: '#FFFACC'
-		display: 'flex',
-		flexDirection: 'column',
-		margin: 24,
-		padding: 24,
-		width: 'auto',
-		// backgroundColor: UI_COLORS.white,
-		// shadowColor: '#000',
-		// shadowOpacity: 0.53,
-		// shadowRadius: 13.97,
-		// elevation: 21,
-		// borderRadius: 8,
-	}
 })
+
+const container = StyleSheet.compose(generalStyles.rectangle, styles.container)
+const lastExams = StyleSheet.compose(generalStyles.rectangle, styles.lastExams)
+const statistics = StyleSheet.compose(generalStyles.rectangle, styles.statistics)
 
 export default Home
