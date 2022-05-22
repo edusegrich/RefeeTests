@@ -4,9 +4,9 @@ import { View, ScrollView, Text, StyleSheet } from 'react-native'
 import Constants from 'expo-constants'
 import UI_COLORS from '../colors'
 import Welcome from './Welcome'
-import { SportChoice } from './signin/SportChoice'
-import { CategoryChoice } from './signin/CategoryChoice'
-import { Signin } from './signin/Signin'
+import { SportChoice } from './signup/SportChoice'
+import { CategoryChoice } from './signup/CategoryChoice'
+import { Signup } from './signup/Signup'
 import Exam from './user/Exam'
 import Home from './user/Home'
 import AppBar from './common/AppBar'
@@ -36,8 +36,8 @@ const Main = () => {
 					component={Welcome}
 				/>
 				<Stack.Screen
-					name="Signin"
-					component={Signin}
+					name="Signup"
+					component={Signup}
 					options={{
 						contentStyle: { backgroundColor: UI_COLORS.blueSky,
 						justifyContent: 'center' }

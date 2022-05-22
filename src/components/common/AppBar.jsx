@@ -1,6 +1,6 @@
 import { View, Text, Image, TouchableHighlight, StyleSheet } from 'react-native'
 import { useState } from 'react'
-import UI_COLORS from '../../colors'
+import UI_COLORS from '../../utils/colors'
 import UI_ICONS from '../../icons/iconsDict'
 
 const Tab = {

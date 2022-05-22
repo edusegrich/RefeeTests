@@ -13,7 +13,7 @@ export const InputState = {
 	NONE: 'none'
 }
 
-export const Signin = ({ navigation }) => {
+export const Signup = ({ navigation }) => {
 	const [validEmail, setValidEmail] = useState(InputState.NONE)
 	const [validPassword, setValidPassword] = useState(InputState.NONE)
 	const emailError = validEmail === InputState.NONVALID ? true : false
