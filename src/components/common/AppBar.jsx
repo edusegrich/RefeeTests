@@ -29,7 +29,7 @@ const AppBar = () => {
 
 const AppBarTab = ({tab, text, activeTab, handleActiveTab}) => {
     const isActiveTab = tab === activeTab ? true : false
-    console.log(isActiveTab)
+    const textStyle = tab === activeTab ? styles.labelActive : styles.label
     let icon = UI_ICONS.home
     switch (tab) {
         case Tab.HOME:
@@ -57,7 +57,7 @@ const AppBarTab = ({tab, text, activeTab, handleActiveTab}) => {
             onPress={handleOnPress}>
             <View style={styles.tab}>
                 <Image style={styles.icon} source={icon} />
-                <Text style={isActiveTab === true ? styles.labelActive : styles.label}>{text}</Text>
+                <Text style={textStyle}>{text}</Text>
             </View>
         </TouchableHighlight>
     )
@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
         width: 24
     },
     labelActive: {
-        fontSize: 8,
+        fontSize: 10,
         fontWeight: '700',
         fontFamily: 'Inter',
         color: UI_COLORS.blueNavy,
