@@ -12,7 +12,9 @@ const UI_COLORS = {
     red: '#F72B60',
     redSoft: '#FAE6E8',
     green: '#1BE68B',
-    greenSoft: '#E1F8F0'
+    green2: '#2DE61B',
+    greenSoft: '#E1F8F0',
+    greenSoft2: '#E4F8E1',
 }
 
 export default UI_COLORS

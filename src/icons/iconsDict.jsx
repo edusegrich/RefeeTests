@@ -12,6 +12,8 @@ import homeGrayIcon from './png/homeGray.png'
 import profileGrayIcon from './png/profileGray.png'
 import settingsGrayIcon from './png/settingsGray.png'
 import logoutGrayIcon from './png/logoutGray.png'
+import greenCheckIcon from './png/greenCheck.png'
+import redCrossIcon from './png/redCross.png'
 
 const UI_ICONS = {
 	refeetests: refeetestsLogo, 
@@ -28,6 +30,8 @@ const UI_ICONS = {
 	profileGray: profileGrayIcon,
 	settingsGray: settingsGrayIcon,
 	logoutGray: logoutGrayIcon,
+	greenCheck: greenCheckIcon,
+	redCross: redCrossIcon,
 }
 
 export default UI_ICONS
