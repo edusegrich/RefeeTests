@@ -2,7 +2,7 @@ import { View, Text, StyleSheet } from 'react-native'
 import { useState } from 'react'
 import NextButton from './NextButton'
 import { Pill, PillSelection } from '../common/Pill'
-import UI_COLORS from '../../colors'
+import UI_COLORS from '../../utils/colors'
 
 export const CategoryChoice = () => {
 	const [selectedCategory, setSelectedCategory] = useState(PillSelection.NONE)

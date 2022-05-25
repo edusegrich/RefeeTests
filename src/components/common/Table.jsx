@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet } from 'react-native'
 import { ScorePill, Result } from './ScorePill'
-import UI_COLORS from '../../colors'
+import UI_COLORS from '../../utils/colors'
 
 const Table = (props) => {
     return (

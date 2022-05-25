@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet } from 'react-native'
 import {useState, useEffect } from 'react'
-import UI_COLORS from '../../colors'
+import UI_COLORS from '../../utils/colors'
 
 const ResultsSummary = (props) => {
     const totalExams = 100

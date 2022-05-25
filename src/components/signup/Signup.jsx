@@ -4,7 +4,7 @@ import NextButton from './NextButton'
 import { SignWithGoogleButton } from '../common/GoogleButtons'
 import Separator from '../common/Separator'
 import UI_ICONS from '../../icons/iconsDict'
-import UI_COLORS from '../../colors'
+import UI_COLORS from '../../utils/colors'
 import { isValidEmail, isValidPassword } from '../../utils/checkCredentials'
 
 export const InputState = {

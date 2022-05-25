@@ -1,12 +1,12 @@
 import { View, Text, TextInput, Image, StyleSheet } from 'react-native'
 import { useState } from 'react'
 import LoginButton from './common/LoginButton'
-import NextButton from './signin/NextButton'
-import { InputState } from './signin/Signin'
+import NextButton from './signup/NextButton'
+import { InputState } from './signup/Signup'
 import Separator from './common/Separator'
 import { LoginWithGoogleButton } from './common/GoogleButtons'
 import UI_ICONS from '../icons/iconsDict'
-import UI_COLORS from '../colors'
+import UI_COLORS from '../utils/colors'
 import { isValidEmail, isValidPassword } from '../utils/checkCredentials'
 
 const Welcome = ({ navigation }) => {
@@ -68,7 +68,7 @@ const Welcome = ({ navigation }) => {
                 <LoginWithGoogleButton />
                 <View style={{ alignItems: 'center', marginTop: 40 }}>
                     <Text style={styles.label}>
-						¿No tienes una cuenta? <Text style={styles.click} onPress={() => navigation.navigate('Signin')}>Regístrate</Text>
+						¿No tienes una cuenta? <Text style={styles.click} onPress={() => navigation.navigate('Signup')}>Regístrate</Text>
 					</Text>
                 </View>
             </View>

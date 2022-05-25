@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet } from 'react-native'
-import UI_COLORS from '../../colors'
+import UI_COLORS from '../../utils/colors'
 
 const Separator = () => {
     return (

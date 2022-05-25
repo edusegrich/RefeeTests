@@ -1,7 +1,7 @@
 import { View, Image, TouchableHighlight, StyleSheet } from 'react-native'
 import Constants from 'expo-constants'
 import UI_ICONS from '../../../icons/iconsDict'
-import UI_COLORS from '../../../colors'
+import UI_COLORS from '../../../utils/colors'
 
 const NewExamButton = (props) => {
     const { handleOnPress } = props

@@ -2,7 +2,7 @@
 // import Constants from 'expo-constants'
 import { View, ScrollView, Text, StyleSheet } from 'react-native'
 import Constants from 'expo-constants'
-import UI_COLORS from '../colors'
+import UI_COLORS from '../utils/colors'
 import Welcome from './Welcome'
 import { SportChoice } from './signup/SportChoice'
 import { CategoryChoice } from './signup/CategoryChoice'
@@ -65,6 +65,7 @@ const Main = () => {
 					options={{
 						contentStyle: {
 							backgroundColor: UI_COLORS.blueSky,
+							// backgroundColor: UI_COLORS.white,
 							justifyContent: 'center'
 						}
 					}}

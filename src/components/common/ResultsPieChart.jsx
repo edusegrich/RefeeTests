@@ -1,7 +1,7 @@
 import { View, StyleSheet } from 'react-native'
 import { useEffect } from 'react'
 import { PieChart } from 'react-native-svg-charts'
-import UI_COLORS from '../../colors'
+import UI_COLORS from '../../utils/colors'
 
 const ResultsPieChart = (props) => {
     let data = [
