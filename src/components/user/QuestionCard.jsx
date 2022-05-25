@@ -1,17 +1,17 @@
 import { View, Text, StyleSheet } from 'react-native'
-import UI_COLORS from '../../colors'
+import Answer from './Answer'
+import UI_COLORS from '../../utils/colors'
 
 const QuestionCard = (props) => {
-
+    const { number } = props
     return (
         <View style={styles.container}>
-            <Text style={questionNumber}>Pregunta 1</Text>
+            <Text style={questionNumber}>Pregunta {number}</Text>
             <Text style={statement}>¿Cuáles son las normas básicas del Reglamento?</Text>
-            {/* <Text style={statement}>¿A qué deporte te dedicas?</Text> */}
-            <Text style={answer}>A. Las normas básicas son bla bla bla bla bla bla bla</Text>
-            <Text style={answer}>B. Las normas básicas son bla bla bla bla bla bla bla</Text>
-            <Text style={answer}>C. Las normas básicas son bla bla bla bla bla bla bla</Text>
-            <Text style={answer}>D. Las normas básicas son bla bla bla bla bla bla bla</Text>
+            <Answer {...{ option: 'A', answerText: 'Las normas básicas del reglamento son bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla.' }} />
+            <Answer {...{ option: 'B', answerText: 'Las normas básicas del reglamento son bla bla bla bla bla bla.' }} />
+            <Answer {...{ option: 'C', answerText: 'Las normas básicas del reglamento son bla bla bla bla bla bla.' }} />
+            <Answer {...{ option: 'D', answerText: 'Las normas básicas del reglamento son bla bla bla bla bla bla.' }} />
         </View>
     )
 }
@@ -41,15 +41,13 @@ const styles = StyleSheet.create({
         fontSize: 16,
         fontWeight: '700'
 	},
-    answer: {
-        marginBottom: 10,
-    },
 	container: {
 		display: 'flex',
 		flexDirection: 'column',
-		margin: 24,
+		margin: 12,
 		padding: 24,
 		width: 'auto',
+        height: 'auto',
 		backgroundColor: UI_COLORS.white,
 		shadowColor: '#000',
 		shadowOpacity: 0.53,
