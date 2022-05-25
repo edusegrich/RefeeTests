@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet } from 'react-native'
-import UI_COLORS from '../../colors'
+import UI_COLORS from '../../utils/colors'
 
 export const Result = {
 	PASSED: 'Aprobado',
@@ -18,12 +18,9 @@ export const ScorePill = ({ result }) => {
 
 const generalStyles = StyleSheet.create({
     container: {
-        display: 'flex',
-		flexDirection: 'row',
-		justifyContent: 'center',
 		alignSelf: 'flex-start',
-		// marginHorizontal: 5,
 		paddingHorizontal: 5,
+		paddingVertical: 1,
 		fontSize: 12,
 		borderRadius: 100,
     }

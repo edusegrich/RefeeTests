@@ -1,5 +1,5 @@
 import { Text, StyleSheet, TouchableHighlight } from 'react-native'
-import UI_COLORS from '../../colors'
+import UI_COLORS from '../../utils/colors'
 
 export const PillSelection = {
 	NONE: 'none'
@@ -16,90 +16,84 @@ export const Pill = (props) => {
 	}
 
 	return (
-        // <View style={styles.container2}>
-            <TouchableHighlight
-            style={
+		<TouchableHighlight
+			style={
 				selected === true
-				? styles.buttonSelected
-				: styles.button
+					? buttonSelected
+					: button
 			}
-            underlayColor={UI_COLORS.gray2}
-            activeOpacity={0.8}
-            onPress={handleOnPress}>
-            {/* <View style={styles.container2}> */}
-                {/* <View style={styles.container}> */}
-					{
-						selected === true
-						? <Text style={styles.labelSelected}>{text}</Text>
-						: <Text style={styles.label}>{text}</Text>
-					}
-                    {/* <Text style={styles.label}>{text}</Text> */}
-                {/* </View> */}
-            {/* </View> */}
-            </TouchableHighlight>
-        // </View>
+			underlayColor={UI_COLORS.gray2}
+			activeOpacity={0.8}
+			onPress={handleOnPress}>
+			{
+				selected === true
+					? <Text style={labelSelected}>{text}</Text>
+					: <Text style={label}>{text}</Text>
+			}
+		</TouchableHighlight>
 	)
 }
 
-const styles = StyleSheet.create({
-	label: {
+export const NonTouchablePill = (props) => {
+    const { text } = props
+
+	return (
+        <Text style={nonTouchablePillStyle}>
+			{text}
+		</Text>
+	)
+}
+
+const generalStyles = StyleSheet.create({
+	font: {
 		fontSize: 16,
 		fontWeight: '500',
-		width: 'auto',
 		fontFamily: 'Inter',
 		color: UI_COLORS.blueNavy
-	},
-	labelSelected: {
-		fontSize: 16,
-		fontWeight: '700',
-		width: 'auto',
-		fontFamily: 'Inter',
-		color: UI_COLORS.blueNavy
-	},
-    container: {
-		display: 'flex',
-		flexDirection: 'row',
-		justifyContent: 'center',
-        padding: 10,
-        width: 'auto',
-        // maxWidth: '50%',
-		backgroundColor: '#F5F7FB',
-		borderWidth: 1,
-		borderColor: UI_COLORS.gray2,
-		borderRadius: 100,
-	},
-    container2: {
-		display: 'flex',
-		flexDirection: 'row',
-		// justifyContent: 'center',
-        padding: 10,
-        width: 'auto',
-        // backgroundColor: 'blue',
 	},
 	button: {
-        display: 'flex',
+		display: 'flex',
 		flexDirection: 'row',
 		justifyContent: 'center',
 		alignSelf: 'flex-start',
-        padding: 10,
-		margin: 5,
-        width: 'auto',
-        // maxWidth: '50%',
 		backgroundColor: UI_COLORS.gray3,
 		borderWidth: 1,
-		borderColor: UI_COLORS.gray2,
 		borderRadius: 100,
+	}
+})
+
+const styles = StyleSheet.create({
+	label: {
+		width: 'auto',
+	},
+	labelSelected: {
+		fontWeight: '700',
+		width: 'auto',
+	},
+	button: {
+		borderColor: UI_COLORS.gray2,
+		padding: 10,
+		margin: 5,
+        width: 'auto',
 	},
 	buttonSelected: {
-        display: 'flex',
-		flexDirection: 'row',
-		justifyContent: 'center',
-        padding: 10,
+		borderColor: UI_COLORS.blueNavy,
+		padding: 10,
 		margin: 5,
         width: 'auto',
-		backgroundColor: UI_COLORS.gray3,
-		borderWidth: 1,
-		borderColor: UI_COLORS.blueNavy,
-		borderRadius: 100,
 	},
 })
+
+const nonTouchablePillStyles = StyleSheet.create({
+	pill: {
+		padding: 5,
+		borderColor: UI_COLORS.gray2,
+		fontSize: 12,
+	}
+})
+
+const label = StyleSheet.compose(generalStyles.font, styles.label)
+const labelSelected = StyleSheet.compose(generalStyles.font, styles.labelSelected)
+const button = StyleSheet.compose(generalStyles.button, styles.button)
+const buttonSelected = StyleSheet.compose(generalStyles.button, styles.buttonSelected)
+const nonTouchablePillStyle = StyleSheet.compose(generalStyles.button, nonTouchablePillStyles.pill)
