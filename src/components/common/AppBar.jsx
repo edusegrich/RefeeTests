@@ -29,7 +29,7 @@ const AppBar = () => {
 
 const AppBarTab = ({tab, text, activeTab, handleActiveTab}) => {
     const isActiveTab = tab === activeTab ? true : false
-    const textStyle = tab === activeTab ? styles.labelActive : styles.label
+    const textStyle = tab === activeTab ? labelActive : label
     let icon = UI_ICONS.home
     switch (tab) {
         case Tab.HOME:
@@ -71,7 +71,12 @@ const generalStyles = StyleSheet.create({
 		shadowRadius: 13.97,
 		elevation: 21,
 		borderRadius: 8,
-	}
+	},
+    font: {
+        fontSize: 8,
+        fontFamily: 'Inter',
+        fontWeight: '500'
+    }
 })
 
 const styles = StyleSheet.create({
@@ -86,9 +91,6 @@ const styles = StyleSheet.create({
 		// borderRadius: 8,
     },
     label: {
-        fontSize: 8,
-        fontWeight: '500',
-        fontFamily: 'Inter',
         color: UI_COLORS.gray4,
     },
     tab: {
@@ -102,13 +104,12 @@ const styles = StyleSheet.create({
         width: 24
     },
     labelActive: {
-        fontSize: 10,
-        fontWeight: '700',
-        fontFamily: 'Inter',
         color: UI_COLORS.blueNavy,
     }
 })
 
 const container = StyleSheet.compose(generalStyles.rectangle, styles.container)
+const label = StyleSheet.compose(generalStyles.font, styles.label)
+const labelActive = StyleSheet.compose(generalStyles.font, styles.labelActive)
 
 export default AppBar
