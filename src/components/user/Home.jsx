@@ -1,10 +1,13 @@
-import { View, Text, TextInput, Image, StyleSheet } from 'react-native'
-import UI_COLORS from '../../colors'
+import { View, Text, Image, StyleSheet } from 'react-native'
+import UI_COLORS from '../../utils/colors'
 import NewExamButton from '../common/Buttons/NewExamButton'
 import Table from '../common/Table'
 import ResultsPieChart from '../common/ResultsPieChart'
 import ResultsSummary from './ResultsSummary'
 import AppBar from '../common/AppBar'
+import Avatar from './Avatar'
+import { NonTouchablePill } from '../common/Pill'
+import { Sport } from '../signup/SportChoice'
 
 const Home = ({ navigation }) => {
 	const handleOnPress = () => {
@@ -14,10 +17,19 @@ const Home = ({ navigation }) => {
     return (
 		<View>
 			<View style={container}>
-				<Text style={styles.title}>Bienvenido, Edu.</Text>
-				<View style={{ display: 'flex', flexDirection: 'row' }}>
-					{/* <Pill {...{text: Sport.FUTBOL_SALA}} />
-					<Pill {...{text: '3ª División'}} /> */}
+				<Avatar />
+				<View style={{ display: 'flex', flexDirection: 'column', marginLeft: 15 }}>
+					<Text style={styles.title}>Edu</Text>
+					<Text style={styles.label}>edusegrich@gmail.com</Text>
+					
+					<View style={{ display: 'flex', flexDirection: 'row', marginTop: 5 }}>
+						<View style={{ marginRight: 4 }}>
+							<NonTouchablePill {...{text: Sport.FUTBOL }} />
+						</View>
+						<View style={{ marginRight: 4 }}>
+							<NonTouchablePill {...{text: '3ª División' }} />
+						</View>
+					</View>
 				</View>
 			</View>
 
@@ -71,7 +83,8 @@ const styles = StyleSheet.create({
 	},
 	container: {
 		display: 'flex',
-		flexDirection: 'column',
+		flexDirection: 'row',
+		alignItems: 'center',
 		marginTop: 24,
 		marginHorizontal: 24,
 		padding: 24,
@@ -79,10 +92,9 @@ const styles = StyleSheet.create({
 	},
 	title: {
 		display: 'flex',
-		fontSize: 20,
+		fontSize: 16,
 		fontWeight: '700',
 		// marginTop: 20,
-		marginBottom: 10,
 		fontFamily: 'Inter',
 		color: UI_COLORS.blueNavy,
 	},
