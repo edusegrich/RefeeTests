@@ -38,7 +38,7 @@ const Home = ({ navigation }) => {
 				<ResultsSummary />
 			</View>
 
-			<Table />
+			<Table {...{ navigation }} />
 			
 			<View style={styles.buttonContainer}>
 				<NewExamButton {...{ handleOnPress: handleOnPress }}/>

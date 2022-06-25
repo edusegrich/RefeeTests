@@ -2,7 +2,7 @@ import { View, Text, StyleSheet } from 'react-native'
 import { ScorePill, Result } from './ScorePill'
 import UI_COLORS from '../../utils/colors'
 
-const Table = (props) => {
+const Table = ({ navigation }) => {
     return (
         <View style={container}>
             <View style={styles.row}>
@@ -31,7 +31,7 @@ const Table = (props) => {
             </View>
             <View style={generalStyles.separator} />
             <View style={styles.row}>
-                <Text style={styles.click}>ver todos los exámenes...</Text>
+                <Text style={styles.click} onPress={() => navigation.navigate('ExamsList')}>ver todos los exámenes...</Text>
             </View>
         </View>
     )

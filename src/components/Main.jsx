@@ -10,6 +10,7 @@ import { Signup } from './signup/Signup'
 import Exam from './user/Exam'
 import Home from './user/Home'
 import AppBar from './common/AppBar'
+import ExamsList from './user/ExamsList'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { useFonts } from 'expo-font'
 import Inter from '../fonts/Inter.ttf'
@@ -73,6 +74,15 @@ const Main = () => {
 				<Stack.Screen
 					name="Home"
 					component={Home}
+					options={{
+						contentStyle: {
+							backgroundColor: UI_COLORS.blueSky,
+						}
+					}}
+				/>
+				<Stack.Screen
+					name="ExamsList"
+					component={ExamsList}
 					options={{
 						contentStyle: {
 							backgroundColor: UI_COLORS.blueSky,
