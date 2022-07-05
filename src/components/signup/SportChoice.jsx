@@ -3,6 +3,7 @@ import { useState } from 'react'
 import NextButton from './NextButton'
 import { Pill, PillSelection } from '../common/Pill'
 import UI_COLORS from '../../utils/colors'
+import axios from 'axios'
 
 export const Sport = {
 	FUTBOL: '⚽ Fútbol',
@@ -25,8 +26,20 @@ export const SportChoice = ({ navigation }) => {
 
 	const handleOnPress = () => {
 		selectedSport !== PillSelection.NONE
-		? navigation.navigate('CategoryChoice')
-		: setChoiceError(true)
+			? axios.patch('http://192.168.1.51:3000/api/user', {
+				username: 'edu2',
+				sport: selectedSport,
+			})
+				.then(function (response) {
+					console.log(response.status)
+					if (response.status === 200) {
+						navigation.navigate('Home')
+					}
+				})
+				.catch(function (error) {
+					console.log(error)
+				})
+			: setChoiceError(true)
 		// if (selectedSport !== Sport.NONE) navigation.navigate('CategoryChoice')
 		// else setChoiceError(selectedSport === Sport.NONE ? true : false)
 	}

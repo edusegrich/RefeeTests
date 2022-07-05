@@ -1,5 +1,6 @@
 import { View, Text, TextInput, Image, StyleSheet } from 'react-native'
 import { useState } from 'react'
+import axios from 'axios'
 import LoginButton from './common/LoginButton'
 import NextButton from './signup/NextButton'
 import { InputState } from './signup/Signup'
@@ -10,24 +11,47 @@ import UI_COLORS from '../utils/colors'
 import { isValidEmail, isValidPassword } from '../utils/checkCredentials'
 
 const Welcome = ({ navigation }) => {
+	const [username, setUsername] = useState('')
+	const [password, setPassword] = useState('')
 	const [validEmail, setValidEmail] = useState(InputState.NONE)
 	const [validPassword, setValidPassword] = useState(InputState.NONE)
 	const emailError = validEmail === InputState.NONVALID ? true : false
 	const passwordError = validPassword === InputState.NONVALID ? true : false
 
 	const handleSetEmail = (text) => {
-		String(text).length !== 0 && isValidEmail(text)
-		? setValidEmail(InputState.VALID)
-		: setValidEmail(InputState.NONE)
+		// String(text).length !== 0 && isValidEmail(text)
+		// ? setValidEmail(InputState.VALID)
+		// : setValidEmail(InputState.NONE)
+	}
+
+	const handleSetUsername = (text) => {
+		setUsername(String(text))
 	}
 
 	const handleSetPassword = (text) => {
 		String(text).length !== 0 && isValidPassword(text)
 		? setValidPassword(InputState.VALID)
 		: setValidPassword(InputState.NONE)
+		setPassword(String(text))
 	}
 
 	const handleOnPress = () => {
+		axios.post('http://192.168.1.51:3000/api/login', {
+			username: username,
+			password: password
+		})
+			.then(function (response) {
+				console.log(response.status)
+				if (response.status === 200) {
+					setValidEmail(InputState.VALID)
+					setValidPassword(InputState.VALID)
+					
+					navigation.navigate('Home')
+				}
+			})
+			.catch(function (error) {
+				console.log(error)
+			})
 		if (validEmail === InputState.VALID && validPassword === InputState.VALID) {
 			navigation.navigate('Home')
 		} else {
@@ -42,8 +66,8 @@ const Welcome = ({ navigation }) => {
                 <Image style={styles.logo} source={UI_ICONS.refeetests} />
                 <TextInput
                     style={emailError === false ? styles.input : styles.inputError}
-                    placeholder={'Correo electrónico'}
-					onChangeText={handleSetEmail}
+                    placeholder={'Nombre de Usuario'}
+					onChangeText={handleSetUsername}
                 />
 				{
 					emailError && <Text style={styles.errorMessage}>La cuenta de correo no es válida</Text>

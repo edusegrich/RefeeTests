@@ -1,9 +1,11 @@
 // import { StatusBar } from 'expo-status-bar'
 // import Constants from 'expo-constants'
 import { View, ScrollView, Text, StyleSheet } from 'react-native'
+import { useState } from 'react'
 import Constants from 'expo-constants'
 import UI_COLORS from '../utils/colors'
 import Welcome from './Welcome'
+import { UsernameChoice } from './signup/UsernameChoice'
 import { SportChoice } from './signup/SportChoice'
 import { CategoryChoice } from './signup/CategoryChoice'
 import { Signup } from './signup/Signup'
@@ -18,12 +20,18 @@ import Inter from '../fonts/Inter.ttf'
 const Stack = createNativeStackNavigator()
 
 const Main = () => {
+	const [loggedIn, setLoggedIn] = useState(false)
 	const [loaded] = useFonts({
 		Inter: Inter
 	})
 	if (!loaded) {
 		return null
 	}
+
+	const handleLoggedIn = () => {
+		setLoggedIn(true)
+	}
+
 	return (
 		<View style={styles.container}>
 			<Stack.Navigator
@@ -36,9 +44,20 @@ const Main = () => {
 					name="Welcome"
 					component={Welcome}
 				/>
+				{/* <Stack.Screen name="Welcome" component={Welcome}>
+					{(props) => <Welcome {...{ handleLoggedIn }} />}
+				</Stack.Screen> */}
 				<Stack.Screen
 					name="Signup"
 					component={Signup}
+					options={{
+						contentStyle: { backgroundColor: UI_COLORS.blueSky,
+						justifyContent: 'center' }
+					}}
+				/>
+				<Stack.Screen
+					name="UsernameChoice"
+					component={UsernameChoice}
 					options={{
 						contentStyle: { backgroundColor: UI_COLORS.blueSky,
 						justifyContent: 'center' }
@@ -91,7 +110,12 @@ const Main = () => {
 				/>
 			</Stack.Navigator>
 			<View style={styles.separator} />
-			<AppBar />	
+			{
+				loggedIn === true && 
+				<AppBar />
+			}
+			{/* <View style={styles.separator} />
+			<AppBar /> */}
 		</View>
 	)
 }

@@ -3,15 +3,21 @@ import Answer from './Answer'
 import UI_COLORS from '../../utils/colors'
 
 const QuestionCard = (props) => {
-    const { number } = props
+    const { number, statement, options, id } = props
+    const letters = ['A', 'B', 'C', 'D']
+    const answers = options.map((option, index) =>
+        // eslint-disable-next-line react/jsx-key
+        <Answer {...{ optionLetter: letters[index], answerText: option }} />
+    )
     return (
         <View style={styles.container}>
             <Text style={questionNumber}>Pregunta {number}</Text>
-            <Text style={statement}>¿Cuáles son las normas básicas del Reglamento?</Text>
-            <Answer {...{ option: 'A', answerText: 'Las normas básicas del reglamento son bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla.' }} />
+            <Text style={statementStyle}>{statement}</Text>
+            {answers}
+            {/* <Answer {...{ option: 'A', answerText: 'Las normas básicas del reglamento son bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla.' }} />
             <Answer {...{ option: 'B', answerText: 'Las normas básicas del reglamento son bla bla bla bla bla bla.' }} />
             <Answer {...{ option: 'C', answerText: 'Las normas básicas del reglamento son bla bla bla bla bla bla.' }} />
-            <Answer {...{ option: 'D', answerText: 'Las normas básicas del reglamento son bla bla bla bla bla bla.' }} />
+            <Answer {...{ option: 'D', answerText: 'Las normas básicas del reglamento son bla bla bla bla bla bla.' }} /> */}
         </View>
     )
 }
@@ -57,7 +63,7 @@ const styles = StyleSheet.create({
 	}
 })
 
-const statement = StyleSheet.compose(generalStyles.letra, styles.statement)
+const statementStyle = StyleSheet.compose(generalStyles.letra, styles.statement)
 const questionNumber = StyleSheet.compose(generalStyles.letra, styles.questionNumber)
 const answer = StyleSheet.compose(generalStyles.letra, styles.answer)
 

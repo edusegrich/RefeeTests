@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
 		shadowColor: '#000',
 		shadowOpacity: 0.53,
 		shadowRadius: 13.97,
-		elevation: 21,
+		// elevation: 21,
     }
 })
 

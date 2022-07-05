@@ -3,7 +3,7 @@ import { useState } from 'react'
 import UI_COLORS from '../../utils/colors'
 import UI_ICONS from '../../icons/iconsDict'
 
-const Answer = ({ option, answerText }) => {
+const Answer = ({ optionLetter, answerText }) => {
     const [selected, setSelected] = useState(false)
     const questionAnswered = false
 
@@ -19,7 +19,7 @@ const Answer = ({ option, answerText }) => {
             activeOpacity={0.8}
             onPress={handleOnPress}>
             <View style={selected === true ? containerSelected : generalStyles.container}>
-                <Text style={optionStyle}>{option}</Text>
+                <Text style={optionStyle}>{optionLetter}</Text>
                 <Text style={answer}>{answerText}</Text>
                 {
                     questionAnswered && <View style={{ justifyContent: 'center' }}><Image style={styles.icon} source={UI_ICONS.redCross} /></View>
